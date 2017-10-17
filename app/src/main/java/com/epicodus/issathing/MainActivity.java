@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                 intent.putExtra("email", email);
                 startActivity(intent);
+                finish();
             }
         });
     }
