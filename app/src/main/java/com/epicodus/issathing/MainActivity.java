@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
     private Button mInputButton;
+    private EditText mName;
     private EditText mEmail;
 
     @Override
@@ -16,13 +17,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mInputButton = (Button) findViewById(R.id.btn_login);
+        mName = (EditText) findViewById(R.id.input_name);
         mEmail = (EditText) findViewById(R.id.input_email);
+
 
         mInputButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                String name = mName.getText().toString();
                 String email = mEmail.getText().toString();
                 Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                intent.putExtra("username", name);
                 intent.putExtra("email", email);
                 startActivity(intent);
                 finish();

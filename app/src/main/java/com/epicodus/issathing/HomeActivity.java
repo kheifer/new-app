@@ -27,6 +27,7 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Intent intent =getIntent();
+        String username = intent.getStringExtra("username");
         String email = intent.getStringExtra("email");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -46,8 +47,10 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View sidebar = navigationView.getHeaderView(0);
-        TextView drawerEmail = (TextView) sidebar.findViewById(R.id.textView);
+        TextView drawerEmail = (TextView) sidebar.findViewById(R.id.emailView);
+        TextView drawerName = (TextView) sidebar.findViewById(R.id.nameView);
         drawerEmail.setText(email);
+        drawerName.setText(username);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
