@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private Button mInputButton;
@@ -26,11 +27,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
                 String name = mName.getText().toString();
                 String email = mEmail.getText().toString();
+                if((name.length()<= 2)||!email.contains("@")||!email.contains(".")){
+                    Toast.makeText(MainActivity.this, "Please fill out all the fields!", Toast.LENGTH_SHORT).show();
+                } else {
                 Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                 intent.putExtra("username", name);
                 intent.putExtra("email", email);
                 startActivity(intent);
                 finish();
+                }
             }
         });
     }
